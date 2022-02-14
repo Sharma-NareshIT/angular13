@@ -1,0 +1,152 @@
+	             Setup Environment for TypeScript
+
+1. Download and Install Node.js
+    - Node.js is required for Package Manager
+    - Node.js provide "NPM" as Package Manager
+	  Yarn
+	  NuGet
+	  RubyGems
+	  Bower etc..
+
+     https://nodejs.org/en/
+     [Windows 8+, any another OS]
+
+   - Download  16x version
+
+2. Test Node.js and NPM versions from your command prompt
+
+     C:\>node -v 	12+  
+     C:\>npm -v  	 6+ 
+
+
+3. Download and Install TypeScript on your PC
+
+    C:\>npm install  -g typescript
+    C:\>tsc  -v
+           4.5.5  version
+
+4. Download and Install "Visual Studio Code" editor
+	
+	https://code.visualstudio.com/
+
+    * Not visual studio -  It is Visual Studio Code
+
+5. Download and Install following Extensions for VS Code
+
+          - Live Server [Ritwik Dey]
+          - vscode-icons
+          - Intellisense for CSS class Names in HTML
+
+
+	              Create a new Project for TypeScript
+	              ===========================
+1. Create a new folder for project at any location on your PC
+
+	   D:\TypeScript-Project
+
+2. Open folder in Visual Studio Code
+
+3. Open Terminal in VS Code  [Command Terminal]
+    [Terminal Menu --> New Terminal ]
+
+    Make sure that you changed terminal from 
+          "Power Shell to Command Prompt"    
+         
+     PS  D:\>   Power Shell
+
+4. Run the following command in terminal to create package.json 
+
+    D:\Typescript-Project> npm  init -y
+
+
+5. Run the following command in terminal to create  tsconfig.json
+
+    D:\>Typescript-Project> tsc -init
+
+FAQ: What is Package.json?
+Ans : It comprises of meta data.  
+         Information about your project, like version, kewords, dependencies..
+
+FAQ: What is tsconfig.json?
+Ans:  It configures the rules for typescript configuration in project.
+         It includes details like
+	a) Module System
+	b) Target JavaScript Version
+	c) Language rules etc..  [tsLint.json - obsolete] etc..
+
+
+6. Add following folders into projects
+    	a) public
+	b) src
+
+     public 	 : comprises of static resources like html, images, text docs..
+     src        : comprises of dynamic resources like css, ts, js etc..
+
+
+7. Go to public folder and add a new HTML file by name
+		"index.html"
+
+8. Go to src folder and add a new file  
+		"Index.ts"
+function bodyload(){
+    document.getElementById("container").innerHTML = 'Typescript running..';
+}
+
+9. Transcompile into JavaScript
+	    
+        D:...src>  tsc  index.ts
+                           
+         [This will generate  index.js ]
+
+10. Link JavaScript file to Index.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index</title>
+        <script src="../src/index.js"></script>
+    </head>
+    <body onload="bodyload()">
+        <h2>Welcome to TypeScript</h2>
+        <div id="container"></div>
+    </body>
+</html>
+
+	
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
