@@ -1,0 +1,197 @@
+		Typescript Language Basics
+package.json
+tsconfig.json
+
+- Variables
+- Data Types 
+- Operators
+- Statements
+- Functions
+
+			Variables
+- Variables in Typescript are same as in JavaScript.
+- Variables are declared by using
+	a) var
+	b) let 
+	c) const
+- Variables in typescript are strongly typed.
+
+Syntax:
+	var  variableName:dataType; 
+
+Ex: JavaScript
+	var x = 10;	// x is number
+	x = "A";		// x is string
+	x = true;		// x is boolean
+
+
+		         Data Types
+- Primitive Types 
+	a) number
+	b) boolean
+	c) string
+	d) null
+	e) undefined
+- Non Primitive Types
+	a) Array
+	b) Object
+	c) Map
+
+Note: If data type is not defined for variable in typescript, then it is 
+         configured as "any" type.
+
+FAQ: What is Type Inference?
+Ans: It is a technique of configuring data type for variable according to the value initialized.
+
+Syntax:
+	let  username  = "john";	// type is string
+	let  age  = 22;		// type is number
+
+FAQ: Configuring data type for variable in typescript, is it mandatory?
+Ans:  No.
+
+FAQ: What is union of Types?
+Ans: It is the technique of configuring a variable to handle multiple data types.
+
+Syntax:
+	let  username:string | number;
+	username = "john";		// valid
+	username = 1001;		// valid
+	username = true;		// invalid
+
+
+Ex:
+1. Write the following code into  "Index.ts"
+
+let ProductName:string = "Samsung TV";
+let Price:number = 45000.55;
+let Stock:boolean = true;
+
+console.log(`Name=${ProductName}\nPrice=${Price}\nStock=${(Stock==true)?'Available':'Out of Stock'}`);
+
+2. Transcompile from terminal
+
+	> tsc  index.ts
+
+3.  Run the JavaScript file
+
+	> node  index.js
+
+Summary :
+========
+1. number
+2. string
+3. boolean
+4. null
+5. undefined
+
+		let variableName:number;
+		let variableName:string | number;
+		let variableName:any;
+
+
+		        Non-Primitive Types
+		        ===============
+1. Array
+2. Object
+3. Map
+
+JavaScript:
+	let   collection = [ ];
+	let   collection  = new Array();
+
+	JavaScript array can handle various types of values.
+	JavaScript array size can change dynamically.
+
+	let   collection  = [10, "A", true];		// valid
+
+	Array Methods:
+	join(), slice(), splice(), indexOf(), lastIndexOf(), pop(), push() etc
+
+		    TypeScript Array
+		    =============
+- You can design array in typescript to handle similar type of values or with combination of various types of values.
+
+Syntax:
+	let  collection:string[]  = [ ];	  // only string  
+	let  collection:number[] = [];	  // only number
+
+- You can also configure union of types for array
+
+	let  collection:string[] | number[] = [];
+
+FAQ: What is difference between array "[ ]"  and  Array()?
+Ans:
+	let  collection:string[]  = [ ];		// meta character
+	let  collection:string[] = new Array();	// constructor
+
+         - Array() allows to define size of array.
+         - It will not allow to initialize various types of values even when
+           the data type is configured as "any" type.
+
+Syntax:
+      let collection:any[] = [10, 'john', true];		// valid
+      let collection:any[] = new Array(10, 'john');	// invalid
+					   only number.
+      let collection:any[] = new Array('john', 10);	// invalid
+					   only string.
+
+        - Array() will allow to assign various types of value.
+
+Syntax:
+	let collection:any[] = new Array();
+	collection[0] = 10;
+	collection[1] = 'john';		/// valid
+
+FAQ: Can we define union of types for array?
+Ans:  Yes. But you can't initialize various values into array. 
+                You can only assign union of values.
+
+Syntax:
+	let collection:string[] | number[] = [10, 'john'];  // invalid
+
+	let collection:string[] | number[] = [];
+	collection[0] = 10;
+	collection[1] = 'john';	                   //valid
+
+FAQ: What is a Tuple?
+Ans:  Tuple is a collection of various types of values.
+
+Syntax:
+	let  collection: any[] = [ ];
+
+Note: Array handling and manipulation is same like in JavaScript.
+         All array methods are same.
+	
+Reading 
+- toString()
+- join()
+- slice()
+- find()
+- filter()
+- map()
+
+Add
+- push()
+- unshift()
+- splice()
+
+Remove
+- pop()
+- shift()
+- splice()
+	
+Ex:
+let categories:string[] = ['All', 'Electronics', 'Footwear'];
+categories.push('Fashion');
+categories.map(function(value){
+    console.log(value);
+})
+
+		    Object, Maps
+
+https://github.com/Sharma-NareshIT/angular13
+
+
+
+
