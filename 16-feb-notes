@@ -1,0 +1,213 @@
+How to define object in TypeScript?
+
+-Typescript don't have special data type for object.
+-You have to use "any" as type.
+- All features and functions are same as JavaScript.
+
+Syntax:
+	let obj:any = {   };
+
+Ex:
+let product:any = {
+    "Name": "Samsung TV",
+    "Price": 56000.44,
+    "Stock": true, 
+    "ShippedTo": ['Delhi','Hyd'],
+    "Qty":2,
+    "Total":function(){
+        return this.Qty * this.Price;
+    },
+    "Print":function(){
+        console.log(`Name=${this.Name}\nPrice=${this.Price}\nStock=${this.Stock}\nQty=${this.Qty}\nTotal=${this.Total()}\nShippedTo=${this.ShippedTo}`);
+    }
+}
+product.Print();
+
+
+How to define array of objects?
+- There  is no specific data type for array of objects.
+- You have to use "any" as type.
+
+Syntax:
+	let  products:any[] = [ { }, { }, { }, ... ];
+
+Ex:
+let products:any[] = [
+    {Name: 'TV', Price:56700.44},
+    {Name: 'Mobile', Price: 45000.33}
+];
+console.log(`Mobile Price=${products[1].Price}`);
+
+
+How to define a Map type?
+- There is no specific data type for Map.
+- You have to use "any" as type.
+
+Syntax:
+	let  data:any = new Map();
+	data.set()
+	data.get()
+	data.delete()
+	data.clear()
+
+Ex:
+let products:any = new Map();
+products.set(1, 'Samsung TV');
+products.set(2, 'Mobile');
+
+console.log(products.get(2));
+
+FAQ: What is difference between Object and Map?
+
+Object:
+	- It is a key and value collection.
+	- Keys are only string type.
+	- No size for Keys
+	- You need explicity iterators to read keys and values.
+	- It is slow in reading and rendering.
+	
+Map:
+	- It is also a key and value collection.
+	- Keys are configured with any type.
+	- You can configure size for keys
+	- Map provides implicit iterators for reading keys and values.
+	         [keys(), values(), entries()]
+	- It is faster in reading and rendering.
+
+Ex:
+let products:any = new Map();
+products.set(1, 'Samsung TV');
+products.set(2, 'Mobile');
+
+console.log(products.get(2));
+
+
+How to define date?
+- There is no specific data type for date.
+- You have to use "any" as type with Date() constructor.
+
+Syntax:
+	let  dateofBirth:any = new Date('yy-mm-dd');
+
+- All date functions are same as in JavaScript.
+
+	getHours()
+	getMinutes()
+	getSeconds()
+	getMilliSeconds()
+	getDay()
+	getDate()
+	getMonth()
+	getFullYear()
+	
+	similarly the set() methods.
+
+Ex:
+let Manufactured:any = new Date('2022-01-18');
+console.log(`Manufactured Year=${Manufactured.getFullYear()}`);
+
+How to define Regular Expression?
+- There is no specific data type for regular expression.
+- You have to use "any" as type with expression enclosed in "/ /".
+
+Syntax:
+     let  regExp:any = /[A-Z]{4,10}/;
+
+- Regular expression is verified by using "match()".
+
+Ex:
+let password:string = 'JOHN';
+let regExp:any = /[A-Z]{4,10}/;
+
+if(password.match(regExp)) {
+    console.log('Password Verified..');
+} else {
+    console.log('Error: Password 4 to 10 chars Uppercase Only');
+}
+
+Summary:
+- handling various data types
+	number
+	string
+	null
+	boolean
+	undefined
+	array
+	object
+	map
+	regular expression
+	date
+	array of object
+
+	let name:number[ ] = [ ]
+	let name:any[] = [];
+	let exp:any = / /;
+	
+- Statements are same as in JavaScript
+	
+   Selection Statements	if, else, switch, case, default
+   Looping Statements	for, while, do while
+   Iteration Statements	for..in , for..of
+   Jump Statements		break, continue, return
+   Exception Handling	try, catch, throw, finally
+
+- Operators are same as in JavaScript
+   Arithematic Operators
+   Assignment Operators
+   Logical Operators
+   Comparision Operators  
+   Bitwise Operators  etc..
+
+- Functions and Parameters are same as in JavaScript
+  Parameterized functions
+  Function with return
+  Function with "Rest" parameters
+  Arrow functions
+  Function Recurssion
+  Function Colsure
+  Anonymous functions
+
+Summary for Language Basics:
+1. Variables
+2. Data Types
+3. Operators
+4. Statements
+5. Functions
+
+		        Typescript OOP
+- TypeScript is an OOP language.
+- It supports all features of OOP.
+
+
+		         Contracts in OOP
+		        ==============
+- Contract defines rules for designing a component in OOP.
+- Contracts are designed by using "interface".
+
+Syntax:
+	interface InterfaceName
+	{
+	   // rules
+	}
+
+- Contract can contain only declaration of rules.
+
+	 Name:string = 'TV';	// invalid
+	 Name:string;
+
+Ex:
+interface ProductContract
+{
+    Id:number;
+    Name:string;
+    Cost:number;
+    Stock:boolean;
+}
+
+let product:ProductContract = {
+    "Name": "Samsung TV",
+    "Cost": 56000.44,
+    "Stock": true,
+    "Id": 1,
+}
+
