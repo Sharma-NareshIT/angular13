@@ -1,0 +1,198 @@
+Contracts in OOP
+- Contract defines rules for designing any component in OOP.
+- Contracts are defined by using "interface"
+- Interface can contain only declaration.
+
+Syntax:
+	interface  Name
+	{
+	}
+
+Ex:
+interface ProductContract
+{
+    Id:number;
+    Name:string;
+    Cost:number;
+    Stock:boolean;
+}
+
+let product:ProductContract = {
+    "Name": "Samsung TV",
+    "Cost": 56000.44,
+    "Stock": true,
+    "Id": 1,
+}
+
+Optional Rules in Contract:
+====================
+- Every rule defined in contract is mandatory
+- TypeScript contract can configure optional rules.
+- Optional rules are required to design goal of any module or component.
+- Mandatory rules are required to configure the objective of component.
+- You can configure optional rules by using  
+	"null reference character - ?"
+
+	? 	= zero or one occurance
+	+	= one or more occurrance
+	*	= zero or more occurance
+Syntax:
+	interface  Name
+	{
+	  property?:dataType;	// optional
+	  property:dataType;		// mandatory
+	}
+
+Ex:
+interface ProductContract
+{
+    Id:number;
+    Name:string;
+    Cost:number;
+    Stock?:boolean;		// optional
+}
+
+let product:ProductContract = {
+    "Name": "Samsung TV",
+    "Cost": 56000.44,
+    "Id": 1,
+}
+
+Readonly Rules in Contract
+=====================
+- Every rule defined in contract can be re-assigned with a new value after initialization of value.
+- You can restrict assigning of value after initialization by using 
+	"readonly" 
+
+Syntax:
+	interface  Name
+	{
+	  readonly  Property:dataType;
+	}
+
+Ex:
+interface ProductContract
+{
+    Name:string;
+    readonly Price:number;
+}
+let tv:ProductContract = {
+    Name : "Samsung TV",
+    Price: 56000.55
+}
+tv.Name = "Samsung LED TV";
+tv.Price = 70000.55;            // invalid - readonly
+console.log(`Name=${tv.Name}\nPrice=${tv.Price}`);
+
+Rules for Methods in Contract:
+=======================
+- Every component comprises of properties and methods.
+- Data is stored in properties and functionality is defined by using methods.
+- Contract can contain rules for methods.
+- Every contract method rule can contain only declaration.
+   [ no definition ]
+- Method rule must define the return type.
+- Method rule can be optional.
+
+Syntax:
+  interface  Name
+  {
+    method():dataType;
+    method?():void;
+  }
+
+Ex:
+interface ProductContract
+{
+    Name:string;
+    Price:number;
+    Qty:number;
+    Total():number;
+    Print?():void;
+}
+let tv:ProductContract = {
+    Name : "Samsung TV",
+    Price: 56000.55,
+    Qty: 2,
+    Total() {
+        return this.Qty * this.Price;
+    },
+    Print() {
+     console.log(`Name=${this.Name}\nPrice=${this.Price}\nQty=${this.Qty}\nTotal=${this.Total()}`) ;       
+    }
+}
+tv.Print();
+
+Extending Contracts:
+================
+- Every contract is configure with set of rules.
+- You can extend the contract without modifying the existing set of rules and contract.
+- A contract can be extended by using "extends" keyword.
+- Contract supports extending
+	a) Single
+	b) Multiple
+	c) Multi Level
+
+- Single  : A contract is extended by another contract.
+
+               interface  A 
+               {
+               }
+               interface B extends A
+               {
+               }
+
+- Multi Level : An extended contract is extended again.
+
+              interface C extends B
+              {
+              }
+
+- Multiple  :  A contract can extend more than one contract.
+
+              interface  D extends  A, B, C
+              {
+              }
+
+Ex:
+interface ECMA2015
+{
+    Operators:string;
+    Parameter:string;
+}
+interface ECMA2016 extends ECMA2015
+{
+    Functions:string;
+}
+interface ECMA2017 extends ECMA2016
+{
+    OOP:string;
+    Functions:string;
+}
+let JavaScript:ECMA2017 = {
+    Parameter : '',
+    Operators: '',
+    OOP: '',
+    Functions: ''
+}
+
+Ex:
+interface TextEffects
+{
+    Align:string;
+}
+interface BackEffects
+{
+    BgColor:string;
+}
+interface Effects extends TextEffects, BackEffects
+{
+    Border:string;
+}
+let css : Effects = {
+    Align : 'center',
+    BgColor: 'red',
+    Border : '2px solid red'
+}
+
+		         TypeScript Class
