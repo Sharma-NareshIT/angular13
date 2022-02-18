@@ -1,0 +1,167 @@
+Contracts in OOP
+- rules
+- optional rules
+- readonly rules
+- extend contracts
+- single, multiple and multilevel
+
+		      Class in OOP
+		     ============
+- Configuring class is similar to JavaScript
+- Class members also same
+	a) Properties
+	b) Methods
+	c) Accessors   get(), set()
+	d) Constructor
+- TypeScript class supports 2 types of members.
+	a) Static Member
+	b) Non Static Member
+
+What is static?
+- Static refers to contineous memory.
+- Memory allocate for first object will continue for next object.
+- It uses more memory
+- It can lead to memory leaks.
+- Burden for application
+- TypeScript static members are defined by using "static" keyword
+- Static members are accessible within the class or outside class by using class name.
+
+Syntax:
+	 class  className
+	 {
+	   static  s = 0;
+	 }
+	 className.s ;
+
+What is non-static?
+- It refers to discreet memory.
+- It uses disconnected memory.
+- Memory is newly allocated for every object.
+- Non static members are accessible within the class by using "this" keyword and outside the class by using instance of class.
+
+Syntax:
+	class Name
+	{
+	   n = 0;		// non-static
+	  static s =0;	// static
+	  this.n;
+	}
+	let obj = new Name();
+	obj.n;
+
+Ex:
+class Demo
+{
+    static s = 0;
+    n = 0;
+    constructor(){
+        Demo.s = Demo.s + 1;
+        this.n = this.n + 1;
+    }
+    Print(){
+        console.log(`s=${Demo.s} n=${this.n}`);
+    }
+}
+let obj1 = new Demo();
+obj1.Print();
+let obj2 = new Demo();
+obj2.Print();
+let obj3 = new Demo();
+obj3.Print();
+
+
+- TypeScript class provides code level security for members in class by using "Access Modifers"
+		a) public
+		b) private
+		c) protected
+
+public member:
+- It is public in access.
+- It is accessible from any location and through any object reference.
+- It is the default access modifier for members in TypeScript class.
+- You can access by using base class object or derived class object.
+- You can access in base or in derived class.
+- You can access within the class or outside class.
+
+private member:
+- It is private in access.
+- You can access only within the defined class.
+- It is not accessible outside class.
+
+
+protected member:
+- It is protected in access.
+- You can access with in the defined class.
+- You can access outside class only with in dervied class by using derived class object.
+- It is protected for derived members.
+
+
+Summary
+access	   	public		 private		protected
+------------------------------------------------------------------------------------------------
+with in class	yes		yes		yes
+
+outside class	yes		no		yes
+
+using base object	yes		no		no
+
+using derived object	yes		no		no
+
+[derived object in 	yes		no		yes
+derived class]
+
+[base object in 	yes		no		no
+derived class]
+
+Ex:
+class Product
+{
+    public Name:string =  'Samsung TV';
+    private Price:number = 45600.55;
+    protected Stock:boolean = true;
+    public Print():void{
+        console.log(`Name=${this.Name}\nPrice=${this.Price}\nStock=${this.Stock}`);
+    }
+}
+class ProductExtention extends Product
+{
+    public Print(): void {
+       let obj = new ProductExtention();
+       obj.Name;
+       obj.Stock;
+    }
+}
+
+- TypeScript Properties, Methods, Accessors and Constructor all are same as in JavaScript.
+
+FAQ: Can we define a variable in class?
+Ans : No
+
+FAQ: Can we define a function in class?
+Ans: No
+
+FAQ: Why we can't have a variable and function in class?
+Ans:  Class is template and template contains only mutable components.
+         Variable and function are immutable.
+
+FAQ: What is the rule for constructor?
+Ans:  A derived class constructor must have super call.
+
+class Base
+{
+  constructor(){
+
+  }
+}
+class Derived extends Base
+{
+    constructor() {
+        super();
+    }
+}
+
+		   Class implementing Contracts
+
+		   Template in OOP
+		   =============
+- Abstract class
