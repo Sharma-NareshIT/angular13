@@ -1,0 +1,166 @@
+		       Templates in OOP
+- A template comprises of sample data and logic, which you can implement and customize according to the requirements.
+
+- Templates are used in "Rollouts".
+- Templates are configured by using "Abstract Class".
+- Template uses a contract. It implements contract and initializes functionality.
+
+Syntax:
+	interface   IName
+	{
+	}
+	class  className  impements   IName
+	{
+	}
+
+- A class can implement multiple contracts.
+
+	class className  implements  Contract1, Contract2, ...
+	{
+	}
+
+- A template may contain members defined with functionality as well as the members need to be implemented.
+
+- If any member need to be imlemented then it is marked with "abstract" keyword.
+
+- If a class contains at least one abstract member then the class must be marked as "abstract".
+
+Syntax:
+      abstract class Template
+      {
+         public Name:string = ' ';
+         public abstract Total():number;
+      }
+
+Note: 
+1. A contract can extend another contract.
+2. A class can implement contract.
+3. A class can implement multiple contracts.
+4. A class can extend another class.
+
+- A template comprises data structure and it is hidden for components which are implementing the template.
+
+- The process of hiding data structure and providing only the component for implementation is known as "Abstraction".
+
+
+Ex:
+interface ProductContract
+{
+   Name:string;
+   Price:number;
+   Qty:number;
+   Total():number;
+   Print():void;
+}
+interface CategoryContract
+{
+  CategoryName:string;
+}
+abstract class ProductTemplate implements ProductContract, CategoryContract
+{
+    public Name: string = '';
+    public Price: number = 0;
+    public Qty: number = 0;
+    public CategoryName: string = '';
+    public abstract Total():number;
+    public abstract Print(): void;
+}
+//------------------------- Developer Implements --------------------------
+
+class ProductComponent extends ProductTemplate
+{
+    Name = 'Samsung TV';
+    Price = 66000.44;
+    Qty = 2;
+    Total(){
+      return this.Qty * this.Price;
+    }
+    Print(){ 
+      console.log(`Name=${this.Name}\nPrice=${this.Price}\nQty=${this.Qty}\nTotal=${this.Total()}`);
+    }
+}
+
+let tv = new ProductComponent();
+tv.Print();
+
+		   Module System
+		  =============
+- Export
+- Default
+- Import
+		  CommonJS
+		  Require JS
+		  UMD
+		  AMD
+
+ contract => implements => template => extends => component
+
+FAQ: What is Reflection?
+Ans : It is a technique of accessing the members of class.
+         It returns information about class members.
+
+FAQ: What is Refaction [Refactor]?
+Ans :  It is a techique of encapsulating a set of statements and extracting           into a method.
+
+
+Ex:
+1. Add a new folder "library"
+2. Add sub folders
+	- contracts
+	- templates
+	- components
+
+3. contracts
+	ProductContract.ts
+export interface ProductContract
+{
+    Name:string;
+    Price:number;
+    Qty:number;
+    Total():number;
+    Print():void;
+}
+
+4. templates
+	ProductTemplate.ts
+
+import { ProductContract } from '../contracts/ProductContract';
+
+export abstract class ProductTemplate implements ProductContract
+{
+   public Name:string = '';
+   public Price:number = 0;
+   public Qty: number  = 0;
+   public abstract Total(): number;
+   public abstract Print(): void;
+}
+
+5. components
+	ProductComponent.ts
+import { ProductTemplate } from "../templates/ProductTemplate";
+
+export class ProductComponent extends ProductTemplate
+{
+    Name = 'Samsung TV';
+    Price = 46000.55;
+    Qty = 2;
+    Total() {
+        return this.Qty * this.Price;
+    }
+    Print() {
+        console.log(`Name=${this.Name}\nPrice=${this.Price}\nQty=${this.Qty}\nTotal=${this.Total()}`);
+    }
+}
+
+6. Create a new folder "app"
+7. Add a new file
+	Index.ts
+
+import { ProductComponent } from "../library/components/ProductComponent";
+
+let tv = new ProductComponent();
+tv.Print();
+
+
+		 Dependency Injection
+		=================
